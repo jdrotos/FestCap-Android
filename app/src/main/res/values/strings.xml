@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">FestCap</string>
+    <string name="logout">Log out</string>
+    <string name="add_venue">Add Venue</string>
+    <string name="head_count">Head Count</string>
+    <string name="capacity">Capacity</string>
+    <string name="edit_venue">Edit Venue</string>
+    <string name="edit_fest">Edit Festival</string>
+    <string name="festivals">Festivals</string>
+    <string name="delete_venue">Delete Venue</string>
+    <string name="save">Save</string>
+    <string name="new_festival">New Festival</string>
+
+
+    <string name="no_venue_selected">Select a Venue</string>
+
+    <string name="venue_name">Venue Name</string>
+    <string name="venue_name_required">Venue name is required!</string>
+    <string name="venue_capacity">Venue Capacity</string>
+    <string name="venue_capacity_required">Venue capacity is required!</string>
+    <string name="fest_name_required">Fest name is required!</string>
+    <string name="venue_capacity_must_be_number">Venue capacity must be a positive number!</string>
+    <string name="venue_doorkeepers_hint">Door Keepers</string>
+    <string name="venue_doorkeepers_desc">Door Keepers can update the current headcount for this venue.</string>
+
+    <string name="festival_name">Festival Name</string>
+    <string name="festival_admins_hint">Festival Administrators</string>
+    <string name="festival_admin_desc">Festival Administrators can add and remove venues, festival members, and permissions.</string>
+    <string name="festival_members_hint">Festival Members</string>
+    <string name="festival_members_desc">Festival Members can view festival venue data, and can be added as doormen.</string>
+
+
+    <string name="open_drawer_desc">Venue Drawer Open</string>
+    <string name="closed_drawer_desc">Venue Drawer Closed</string>
+</resources>
