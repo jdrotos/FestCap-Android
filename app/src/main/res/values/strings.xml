@@ -13,6 +13,7 @@
 
 
     <string name="no_venue_selected">Select a Venue</string>
+    <string name="no_headcount_permissions">You do not have permission to edit this Venue\'s headcount. Ask a festival administrator to grant you access.</string>
 
     <string name="venue_name">Venue Name</string>
     <string name="venue_name_required">Venue name is required!</string>

@@ -120,16 +120,32 @@ class VenueFragment : Fragment() {
 
     private fun bindVenue(venue: Venue) {
         this.venue = venue
-
         activity.title = venue.name
         binding.headcountTv.text = "$headCount/"
         binding.capacityTv.text = venue.capacity.toString()
+        updateHeadcountVisibilities()
     }
 
     private fun bindFest(fest: Fest) {
         this.fest = fest
         (activity as? AppCompatActivity)?.let {
             it.supportInvalidateOptionsMenu()
+        }
+        updateHeadcountVisibilities()
+    }
+
+    private fun updateHeadcountVisibilities() {
+        val canEditHeadCount = this::fest.isInitialized
+                && this::venue.isInitialized
+                && FirebaseAuth.getInstance().currentUser?.let {
+            PermissionChecker.canEditHeadCount(it, fest, venue)
+        } ?: false
+        if (canEditHeadCount) {
+            binding.headcountContainer.visibility = View.VISIBLE
+            binding.noPermissionsContainer.visibility = View.GONE
+        } else {
+            binding.headcountContainer.visibility = View.GONE
+            binding.noPermissionsContainer.visibility = View.VISIBLE
         }
     }
 

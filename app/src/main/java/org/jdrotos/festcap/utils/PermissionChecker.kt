@@ -15,6 +15,6 @@ object PermissionChecker {
     fun canViewFest(user: FirebaseUser, fest: Fest) =
             fest.memberIds.containsKey(user.uid)
 
-    fun canEditHeadCount(user: FirebaseUser, venue: Venue) =
-            venue.doorKeeperIds.containsKey(user.uid)
+    fun canEditHeadCount(user: FirebaseUser, fest: Fest, venue: Venue) =
+            canAdminFest(user, fest) || venue.doorKeeperIds.containsKey(user.uid)
 }
