@@ -88,7 +88,7 @@ class VenueActivity : AppCompatActivity() {
 
                 override fun onDataChange(snapshot: DataSnapshot?) {
                     if (snapshot?.exists() == true) {
-                        showVenueFrag(venueId)
+                        showVenueFrag(festId, venueId)
                     } else {
                         removeVenueFrag()
                     }
@@ -110,11 +110,11 @@ class VenueActivity : AppCompatActivity() {
         binding.drawerLayout.openDrawer(binding.startDrawerContainer)
     }
 
-    private fun showVenueFrag(venueId: String) {
+    private fun showVenueFrag(festId: String, venueId: String) {
         binding.selectAVenue.visibility = View.GONE
         binding.drawerLayout.closeDrawers()
         fragmentManager.beginTransaction().let {
-            it.replace(R.id.main_fragment_container, VenueFragment.newInstance(venueId), FTAG_VENUE)
+            it.replace(R.id.main_fragment_container, VenueFragment.newInstance(festId, venueId), FTAG_VENUE)
             it.commit()
         }
     }

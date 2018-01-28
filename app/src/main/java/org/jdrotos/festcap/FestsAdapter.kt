@@ -4,11 +4,14 @@ import android.databinding.DataBindingUtil
 import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuth
 import org.jdrotos.festcap.data.Fest
 import org.jdrotos.festcap.data.Venue
 import org.jdrotos.festcap.databinding.RowFestBinding
 import org.jdrotos.festcap.databinding.RowVenueBinding
+import org.jdrotos.festcap.utils.PermissionChecker
 import kotlin.properties.Delegates
 
 /**
@@ -56,6 +59,11 @@ class FestsAdapter(private val allowCreate: Boolean, private val addNewFestClick
                 itemView.setOnClickListener {
                     itemView.context.startActivity(VenueActivity.createIntent(itemView.context, fest.id))
                 }
+
+                val canEditFest = FirebaseAuth.getInstance().currentUser?.let {
+                    PermissionChecker.canAdminFest(it, fest)
+                } ?: false
+                binding.editFest.visibility = if (canEditFest) View.VISIBLE else View.GONE
                 binding.editFest.setOnClickListener {
                     itemView.context.startActivity(EditFestActivity.generateNewIntent(itemView.context, fest))
                 }
