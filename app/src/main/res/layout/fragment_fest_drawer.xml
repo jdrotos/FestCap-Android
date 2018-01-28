@@ -19,7 +19,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="16dp"
-                android:textColor="@color/white" />
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+                android:drawableTint="@color/white"
+                android:drawableTintMode="src_atop"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
 
         </FrameLayout>
 

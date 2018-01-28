@@ -55,6 +55,11 @@ class FestDrawerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fest_drawer, container, false)
 
+        binding.festNameTv.setOnClickListener {
+            startActivity(FestsActivity.createIntent(activity))
+            activity.finish()
+        }
+
         binding.recycler.layoutManager = LinearLayoutManager(container.context, LinearLayoutManager.VERTICAL, false)
         adapter = VenueAdapter(true, {
             startActivity(EditVenueActivity.generateNewIntent(activity, Venue(festId = festId)))
@@ -107,7 +112,7 @@ class FestDrawerFragment : Fragment() {
 
     private val headCountDataListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot?) {
-            adapter.headCounts = snapshot?.children?.mapNotNull { it.getValue(HeadCount::class.java) }?.associateBy({it.id}) ?: emptyMap()
+            adapter.headCounts = snapshot?.children?.mapNotNull { it.getValue(HeadCount::class.java) }?.associateBy({ it.id }) ?: emptyMap()
         }
 
         override fun onCancelled(e: DatabaseError?) {
