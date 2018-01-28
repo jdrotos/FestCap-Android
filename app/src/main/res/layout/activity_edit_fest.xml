@@ -36,11 +36,10 @@
             android:id="@+id/fest_admins_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp">
 
-            <EditText
+            <com.hootsuite.nachos.NachoTextView
                 android:id="@+id/fest_admins_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,12 +62,13 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp">
 
-            <EditText
+            <com.hootsuite.nachos.NachoTextView
                 android:id="@+id/fest_members_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/festival_members_hint"
                 android:textSize="22sp" />
+
         </android.support.design.widget.TextInputLayout>
 
         <TextView

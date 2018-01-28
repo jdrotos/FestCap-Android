@@ -13,7 +13,10 @@
 
 
     <string name="no_venue_selected">Select a Venue</string>
+
     <string name="no_headcount_permissions">You do not have permission to edit this Venue\'s headcount. Ask a festival administrator to grant you access.</string>
+    <string name="no_admins_entered">Each festival must have at least one admin.</string>
+    <string name="unknown_emails">Some of the supplied emails are unknown to FestCap. Ask them to install the app and sign in. After that, try adding them again. Invalid emails:</string>
 
     <string name="venue_name">Venue Name</string>
     <string name="venue_name_required">Venue name is required!</string>
