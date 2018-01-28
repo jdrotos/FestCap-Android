@@ -11,8 +11,10 @@ import android.view.*
 import com.google.firebase.database.*
 import org.jdrotos.festcap.data.DataKeys
 import org.jdrotos.festcap.data.HeadCount
+import org.jdrotos.festcap.data.User
 import org.jdrotos.festcap.data.Venue
 import org.jdrotos.festcap.databinding.ActivityEditVenueBinding
+import org.jdrotos.festcap.utils.NachoUtils
 import timber.log.Timber
 
 
@@ -22,6 +24,9 @@ import timber.log.Timber
 class EditVenueActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityEditVenueBinding
+
+    private var users = emptyList<User>()
+    private var hasProcessedUsers = false
 
     private val argVenue: Venue by lazy {
         intent.getParcelableExtra<Venue>(ARG_VENUE)
@@ -41,6 +46,12 @@ class EditVenueActivity : AppCompatActivity() {
         }
     }
 
+    private val usersRef: DatabaseReference by lazy {
+        FirebaseDatabase.getInstance().let {
+            it.getReference(DataKeys.USERS)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_venue)
@@ -50,6 +61,7 @@ class EditVenueActivity : AppCompatActivity() {
 
         binding.venueNameEdittext.setText(argVenue.name)
         binding.venueCapcityEdittext.setText(argVenue.capacity.toString())
+        NachoUtils.setupStandardChipsForEmail(binding.venueDoorkeepersEdittext)
 
         binding.createBtn.setOnClickListener {
             createVenue()?.let {
@@ -70,11 +82,13 @@ class EditVenueActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         headCountRef.addListenerForSingleValueEvent(headCountDataListener)
+        usersRef.addValueEventListener(usersDataListener)
     }
 
     override fun onStop() {
         super.onStop()
         headCountRef.removeEventListener(headCountDataListener)
+        usersRef.removeEventListener(usersDataListener)
     }
 
 
@@ -135,11 +149,18 @@ class EditVenueActivity : AppCompatActivity() {
             return null
         }
 
-        val doorKeeperList = binding.venueDoorkeepersEdittext.text.trim().split(',')
-        val doorKeeperMap = doorKeeperList.associate { it to true }.filterKeys { it.isNotBlank() }
+        val doorKeeperEmailAddrs = binding.venueDoorkeepersEdittext.chipValues.distinct()
+        val emailToUserIds = users.associateBy({ it.email }, { it.id })
+        val unknownDoorKeeperEmailAddrs = doorKeeperEmailAddrs.filter { !emailToUserIds.containsKey(it) }
+        if (unknownDoorKeeperEmailAddrs.isNotEmpty()) {
+            binding.venueDoorkeepersInputLayout.error = getString(R.string.unknown_emails) + unknownDoorKeeperEmailAddrs.joinToString()
+            return null
+        } else {
+            binding.venueDoorkeepersInputLayout.error = null
+        }
+        val doorKeepers = doorKeeperEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to true }
 
-
-        return argVenue.copy(name = venueName.toString(), capacity = venueCapacityInt, doorKeeperIds = doorKeeperMap)
+        return argVenue.copy(name = venueName.toString(), capacity = venueCapacityInt, doorKeeperIds = doorKeepers)
     }
 
     private val headCountDataListener = object : ValueEventListener {
@@ -154,6 +175,21 @@ class EditVenueActivity : AppCompatActivity() {
         }
     }
 
+    private val usersDataListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot?) {
+            users = snapshot?.children?.mapNotNull { it.getValue(User::class.java) } ?: emptyList()
+            if (!hasProcessedUsers) {
+                val festAdminUsers = argVenue.doorKeeperIds.keys.mapNotNull { doorKeeperId -> users.firstOrNull { it.id == doorKeeperId } }
+                binding.venueDoorkeepersEdittext.setText(festAdminUsers.mapNotNull { it.email })
+                hasProcessedUsers = true
+            }
+            binding.venueDoorkeepersEdittext.setAdapter(NachoUtils.genUserEmailAdapter(this@EditVenueActivity, users))
+        }
+
+        override fun onCancelled(e: DatabaseError?) {
+            Timber.w("Database connection error!")
+        }
+    }
 
     companion object {
         private const val ARG_VENUE = "ARG_VENUE"

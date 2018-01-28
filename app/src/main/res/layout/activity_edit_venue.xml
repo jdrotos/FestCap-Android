@@ -55,12 +55,13 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp">
 
-            <EditText
+            <com.hootsuite.nachos.NachoTextView
                 android:id="@+id/venue_doorkeepers_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/venue_doorkeepers_hint"
                 android:textSize="22sp" />
+
         </android.support.design.widget.TextInputLayout>
 
         <TextView
