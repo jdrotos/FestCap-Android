@@ -90,7 +90,7 @@ class FestDrawerFragment : Fragment() {
 
     private val venueDataListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot?) {
-            adapter.venues = snapshot?.children?.mapNotNull { it.getValue(Venue::class.java) }?.filter { it.festId == festId } ?: emptyList<Venue>()
+            adapter.venues = snapshot?.children?.mapNotNull { it.getValue(Venue::class.java) }?.filter { it.festId == festId }?.sortedBy { it.name } ?: emptyList<Venue>()
         }
 
         override fun onCancelled(e: DatabaseError?) {
