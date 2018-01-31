@@ -7,11 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="@integer/vertical_in_portrait_horizontal_in_landscape">
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/match_parent_in_portrait_wrap_content_in_landscape"
+            android:layout_height="@dimen/wrap_content_in_portrait_match_parent_in_landscape"
             android:background="@color/colorPrimary">
 
             <android.support.constraint.ConstraintLayout
@@ -85,11 +85,11 @@
             android:id="@+id/headcount_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="end|bottom"
             android:layout_marginBottom="24dp"
             android:layout_marginEnd="24dp"
             android:layout_weight="1"
-            android:gravity="center_vertical"
+            android:gravity="bottom|end"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -97,6 +97,7 @@
                 android:id="@+id/plus_btn"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
+                android:layout_gravity="end"
                 android:layout_marginTop="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
@@ -106,6 +107,7 @@
                 android:id="@+id/minus_btn"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
+                android:layout_gravity="end"
                 android:layout_marginTop="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"

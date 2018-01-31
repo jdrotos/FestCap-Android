@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="vertical_in_portrait_horizontal_in_landscape">0</integer>
+    <dimen name="match_parent_in_portrait_wrap_content_in_landscape">-2px</dimen>
+    <dimen name="wrap_content_in_portrait_match_parent_in_landscape">-1px</dimen>
+</resources>
