@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import org.jdrotos.festcap.data.DataKeys
@@ -31,6 +32,10 @@ class EditFestActivity : AppCompatActivity() {
         intent.getParcelableExtra<Fest>(ARG_FEST)
     }
 
+    private val argNewFest: Boolean by lazy {
+        intent.getBooleanExtra(ARG_NEW_FEST, false)
+    }
+
     private val festsRef: DatabaseReference by lazy {
         FirebaseDatabase.getInstance().let {
             it.getReference(DataKeys.FESTS).child(argFest.id)
@@ -49,6 +54,12 @@ class EditFestActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (argNewFest) {
+            title = getString(R.string.new_festival)
+        } else {
+            title = getString(R.string.edit_fest)
+        }
+
 
         binding.festNameEdittext.setText(argFest.name)
 
@@ -76,19 +87,23 @@ class EditFestActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.edit_venue_menu, menu)
-        menu?.findItem(R.id.delete_venue)?.icon?.let {
-            it.mutate()
-            it.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
+        val superRet = super.onCreateOptionsMenu(menu)
+        // At this point the menu is only the delete button, which we dont need for new fests
+        if (!argNewFest) {
+            menuInflater.inflate(R.menu.edit_venue_menu, menu)
+            menu?.findItem(R.id.delete_venue)?.icon?.let {
+                it.mutate()
+                it.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
+            }
+            return true
         }
-        return true
+        return superRet
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.delete_venue -> {
-                deleteFest()
+                showConfirmDeleteDialog()
                 return true
             }
             android.R.id.home -> {
@@ -97,6 +112,15 @@ class EditFestActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showConfirmDeleteDialog() {
+        AlertDialog.Builder(this)
+                .setTitle(R.string.festival_confirm_delete_title)
+                .setMessage(R.string.festival_confirm_delete_message)
+                .setPositiveButton(R.string.delete, { _, _ -> deleteFest() })
+                .setNegativeButton(R.string.cancel, { _, _ -> })
+                .show()
     }
 
     private fun deleteFest() {
@@ -173,9 +197,11 @@ class EditFestActivity : AppCompatActivity() {
 
     companion object {
         private const val ARG_FEST = "ARG_FEST"
+        private const val ARG_NEW_FEST = "ARG_NEW_FEST"
 
-        fun generateNewIntent(context: Context, fest: Fest) = Intent(context, EditFestActivity::class.java).apply {
+        fun generateNewIntent(context: Context, fest: Fest, newFestival: Boolean) = Intent(context, EditFestActivity::class.java).apply {
             putExtra(ARG_FEST, fest)
+            putExtra(ARG_NEW_FEST, newFestival)
         }
     }
 

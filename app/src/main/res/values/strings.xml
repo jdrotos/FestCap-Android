@@ -10,6 +10,8 @@
     <string name="delete_venue">Delete Venue</string>
     <string name="save">Save</string>
     <string name="new_festival">New Festival</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 
 
     <string name="no_venue_selected">Select a Venue</string>
@@ -32,6 +34,9 @@
     <string name="festival_admin_desc">Festival Administrators can add and remove venues, festival members, and permissions.</string>
     <string name="festival_members_hint">Festival Members</string>
     <string name="festival_members_desc">Festival Members can view festival venue data, and can be added as doormen.</string>
+    <string name="festival_confirm_delete_title">Confirm Delete</string>
+    <string name="festival_confirm_delete_message">Deleting this festival will destroy its data. You will not be able to access this festival or any of its venues in the future.</string>
+
 
 
     <string name="open_drawer_desc">Venue Drawer Open</string>

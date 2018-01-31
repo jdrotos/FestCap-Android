@@ -65,7 +65,7 @@ class FestsAdapter(private val allowCreate: Boolean, private val addNewFestClick
                 } ?: false
                 binding.editFest.visibility = if (canEditFest) View.VISIBLE else View.GONE
                 binding.editFest.setOnClickListener {
-                    itemView.context.startActivity(EditFestActivity.generateNewIntent(itemView.context, fest))
+                    itemView.context.startActivity(EditFestActivity.generateNewIntent(itemView.context, fest, false))
                 }
             }
         }
