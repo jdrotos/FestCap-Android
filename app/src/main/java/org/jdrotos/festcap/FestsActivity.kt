@@ -40,6 +40,7 @@ class FestsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fests)
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         adapter = FestsAdapter(true, {
             FirebaseAuth.getInstance().currentUser?.let { u ->
