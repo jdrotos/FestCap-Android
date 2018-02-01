@@ -1,6 +1,5 @@
-package org.jdrotos.festcap
+package com.festcap
 
-import android.app.DialogFragment
 import android.app.Fragment
 import android.databinding.DataBindingUtil
 import android.graphics.Color
@@ -10,14 +9,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.data.HeadCount
-import org.jdrotos.festcap.data.Venue
-import org.jdrotos.festcap.databinding.FragmentVenueBinding
-import org.jdrotos.festcap.utils.PermissionChecker
+import com.festcap.data.DataKeys
+import com.festcap.data.Fest
+import com.festcap.data.HeadCount
+import com.festcap.data.Venue
+import com.festcap.databinding.FragmentVenueBinding
+import com.festcap.utils.PermissionChecker
 import timber.log.Timber
-import java.util.*
 
 /**
  * Created by jdrotos on 11/19/17.

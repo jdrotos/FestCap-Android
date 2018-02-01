@@ -1,4 +1,4 @@
-package org.jdrotos.festcap.data
+package com.festcap.data
 
 /**
  * Data classes should include an id to reference one another

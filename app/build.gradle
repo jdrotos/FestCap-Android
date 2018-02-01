@@ -7,7 +7,7 @@ apply plugin: 'org.jetbrains.kotlin.android.extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "org.jdrotos.festcap"
+        applicationId "com.festcap"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1

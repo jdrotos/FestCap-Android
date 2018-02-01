@@ -1,4 +1,4 @@
-package org.jdrotos.festcap.data
+package com.festcap.data
 
 /**
  * Created by jdrotos on 11/19/17.

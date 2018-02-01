@@ -1,13 +1,11 @@
-package org.jdrotos.festcap
+package com.festcap
 
 import android.app.Fragment
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -15,11 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.data.HeadCount
-import org.jdrotos.festcap.data.Venue
-import org.jdrotos.festcap.databinding.FragmentFestDrawerBinding
+import com.festcap.data.DataKeys
+import com.festcap.data.Fest
+import com.festcap.data.HeadCount
+import com.festcap.data.Venue
+import com.festcap.databinding.FragmentFestDrawerBinding
 import timber.log.Timber
 
 /**

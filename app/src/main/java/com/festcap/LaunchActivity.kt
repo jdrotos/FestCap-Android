@@ -1,4 +1,4 @@
-package org.jdrotos.festcap
+package com.festcap
 
 import android.app.Activity
 import android.content.Intent
@@ -7,8 +7,8 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.data.User
+import com.festcap.data.DataKeys
+import com.festcap.data.User
 import timber.log.Timber
 
 

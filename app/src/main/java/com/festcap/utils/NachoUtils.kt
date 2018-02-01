@@ -1,4 +1,4 @@
-package org.jdrotos.festcap.utils
+package com.festcap.utils
 
 import android.R
 import android.content.Context
@@ -6,7 +6,7 @@ import android.widget.ArrayAdapter
 import com.hootsuite.nachos.NachoTextView
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
-import org.jdrotos.festcap.data.User
+import com.festcap.data.User
 
 /**
  * Created by jdrotos on 1/28/18.

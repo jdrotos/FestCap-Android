@@ -1,4 +1,4 @@
-package org.jdrotos.festcap
+package com.festcap
 
 import android.content.Context
 import android.content.Intent
@@ -9,12 +9,12 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.*
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.databinding.ActivityEditFestBinding
+import com.festcap.data.DataKeys
+import com.festcap.data.Fest
+import com.festcap.databinding.ActivityEditFestBinding
 import com.google.firebase.database.*
-import org.jdrotos.festcap.data.User
-import org.jdrotos.festcap.utils.NachoUtils
+import com.festcap.data.User
+import com.festcap.utils.NachoUtils
 import timber.log.Timber
 
 

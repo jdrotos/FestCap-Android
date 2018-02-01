@@ -1,4 +1,4 @@
-package org.jdrotos.festcap
+package com.festcap
 
 import android.databinding.DataBindingUtil
 import android.support.annotation.LayoutRes
@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.data.Venue
-import org.jdrotos.festcap.databinding.RowFestBinding
-import org.jdrotos.festcap.databinding.RowVenueBinding
-import org.jdrotos.festcap.utils.PermissionChecker
+import com.festcap.data.Fest
+import com.festcap.databinding.RowFestBinding
+import com.festcap.utils.PermissionChecker
 import kotlin.properties.Delegates
 
 /**

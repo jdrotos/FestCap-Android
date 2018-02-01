@@ -1,4 +1,4 @@
-package org.jdrotos.festcap
+package com.festcap
 
 
 import android.arch.lifecycle.ViewModelProviders
@@ -10,8 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.google.firebase.database.*
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.databinding.ActivityVenueBinding
+import com.festcap.data.DataKeys
+import com.festcap.databinding.ActivityVenueBinding
 import timber.log.Timber
 
 /**

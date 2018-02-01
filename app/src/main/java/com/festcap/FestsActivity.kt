@@ -1,25 +1,20 @@
-package org.jdrotos.festcap
+package com.festcap
 
 
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import org.jdrotos.festcap.data.DataKeys
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.data.Venue
-import org.jdrotos.festcap.databinding.ActivityFestsBinding
-import org.jdrotos.festcap.databinding.ActivityVenueBinding
+import com.festcap.data.DataKeys
+import com.festcap.data.Fest
+import com.festcap.databinding.ActivityFestsBinding
 import timber.log.Timber
 
 /**

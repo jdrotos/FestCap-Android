@@ -1,8 +1,7 @@
-package org.jdrotos.festcap.data
+package com.festcap.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 /**
  * Created by jdrotos on 11/18/17.

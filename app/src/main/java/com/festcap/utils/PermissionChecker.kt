@@ -1,9 +1,8 @@
-package org.jdrotos.festcap.utils
+package com.festcap.utils
 
-import com.firebase.ui.auth.User
 import com.google.firebase.auth.FirebaseUser
-import org.jdrotos.festcap.data.Fest
-import org.jdrotos.festcap.data.Venue
+import com.festcap.data.Fest
+import com.festcap.data.Venue
 
 /**
  * Check common permissions

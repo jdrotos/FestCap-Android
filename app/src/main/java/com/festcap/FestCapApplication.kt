@@ -1,4 +1,4 @@
-package org.jdrotos.festcap
+package com.festcap
 
 import android.app.Application
 import timber.log.Timber

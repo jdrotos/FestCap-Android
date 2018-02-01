@@ -1,17 +1,15 @@
-package org.jdrotos.festcap
+package com.festcap
 
-import android.arch.lifecycle.Transformations.map
 import android.databinding.DataBindingUtil
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.support.annotation.LayoutRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import org.jdrotos.festcap.data.HeadCount
-import org.jdrotos.festcap.data.Venue
-import org.jdrotos.festcap.databinding.RowVenueBinding
+import com.festcap.data.HeadCount
+import com.festcap.data.Venue
+import com.festcap.databinding.RowVenueBinding
 import kotlin.properties.Delegates
 
 /**

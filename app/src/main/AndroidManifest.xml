@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.jdrotos.festcap">
+    package="com.festcap">
 
     <application
         android:name=".FestCapApplication"
