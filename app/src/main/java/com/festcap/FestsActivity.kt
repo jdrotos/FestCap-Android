@@ -79,7 +79,12 @@ class FestsActivity : AppCompatActivity() {
 
     private val festsDataListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot?) {
-            adapter.fests = snapshot?.children?.mapNotNull { it.getValue(Fest::class.java) } ?: emptyList<Fest>()
+            FirebaseAuth.getInstance().currentUser?.uid?.let { userId ->
+                adapter.fests = snapshot?.children
+                        ?.mapNotNull { it.getValue(Fest::class.java) }
+                        ?.filter { it.adminIds.containsKey(userId) || it.memberIds.containsKey(userId) }
+                        ?: emptyList<Fest>()
+            }
         }
 
         override fun onCancelled(e: DatabaseError?) {
