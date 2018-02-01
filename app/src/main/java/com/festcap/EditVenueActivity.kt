@@ -158,7 +158,8 @@ class EditVenueActivity : AppCompatActivity() {
         } else {
             binding.venueDoorkeepersInputLayout.error = null
         }
-        val doorKeepers = doorKeeperEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to true }
+        // NOTE: This it to mapOf business is due to bad data, not sure if it will be fixed or what...
+        val doorKeepers = doorKeeperEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to mapOf(it to true) }
 
         return argVenue.copy(name = venueName.toString(), capacity = venueCapacityInt, doorKeeperIds = doorKeepers)
     }
