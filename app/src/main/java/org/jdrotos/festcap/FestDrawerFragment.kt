@@ -61,7 +61,7 @@ class FestDrawerFragment : Fragment() {
         }
 
         binding.recycler.layoutManager = LinearLayoutManager(container.context, LinearLayoutManager.VERTICAL, false)
-        adapter = VenueAdapter(true, {
+        adapter = VenueAdapter( {
             startActivity(EditVenueActivity.generateNewIntent(activity, Venue(festId = festId)))
 
         }).also {
@@ -100,8 +100,14 @@ class FestDrawerFragment : Fragment() {
 
     private val festDataListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot?) {
-            snapshot?.children?.mapNotNull { it.getValue(Fest::class.java) }?.find { it.id == festId }?.let {
-                binding.festNameTv.text = it.name
+            snapshot?.children?.mapNotNull { it.getValue(Fest::class.java) }?.find { it.id == festId }?.let {fest ->
+                binding.festNameTv.text = fest.name
+
+                val allowCreateVenue = FirebaseAuth.getInstance().currentUser?.uid?.let {
+                    fest.adminIds.containsKey(it)
+                } ?: false
+
+                adapter.allowCreate = allowCreateVenue
             }
         }
 

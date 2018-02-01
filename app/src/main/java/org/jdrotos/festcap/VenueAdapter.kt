@@ -17,8 +17,14 @@ import kotlin.properties.Delegates
 /**
  * Created by jdrotos on 11/18/17.
  */
-class VenueAdapter(private val allowCreate: Boolean, private val addNewVenueClick: () -> Unit)
+class VenueAdapter(private val addNewVenueClick: () -> Unit)
     : RecyclerView.Adapter<VenueAdapter.VenueAdapterVH>() {
+
+    var allowCreate: Boolean = false
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     var venues by Delegates.observable(emptyList<Venue>(), { prop, oldval, newval ->
         notifyDataSetChanged()
