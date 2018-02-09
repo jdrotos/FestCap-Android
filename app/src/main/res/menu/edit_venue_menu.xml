@@ -5,5 +5,7 @@
         android:id="@+id/delete_venue"
         android:icon="@drawable/ic_delete_black_24dp"
         android:title="@string/delete_venue"
+        android:enabled="false"
+        android:visible="false"
         app:showAsAction="always" />
 </menu>
