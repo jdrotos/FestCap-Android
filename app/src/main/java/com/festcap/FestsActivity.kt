@@ -39,7 +39,7 @@ class FestsActivity : AppCompatActivity() {
 
         adapter = FestsAdapter(true, {
             FirebaseAuth.getInstance().currentUser?.let { u ->
-                val fest = Fest(creatorId = u.uid, memberIds = mapOf(u.uid to true), adminIds = mapOf(u.uid to true))
+                val fest = Fest(creatorId = u.uid, memberIds = mapOf(u.uid to mapOf(u.uid to true)), adminIds = mapOf(u.uid to true))
                 startActivity(EditFestActivity.generateNewIntent(this, fest, true))
             }
         })

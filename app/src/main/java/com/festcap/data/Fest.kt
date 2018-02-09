@@ -12,6 +12,6 @@ data class Fest(override val id: String = UUID.randomUUID().toString(),
                 val name: String = "",
                 val creatorId: String = "",
                 val adminIds: Map<String, Boolean> = emptyMap(),
-                val memberIds: Map<String, Boolean> = emptyMap(),
+                val memberIds: Map<String, Map<String, Boolean>> = emptyMap(),
                 val venueIds: List<String> = emptyList())
     : Identifiable, Parcelable

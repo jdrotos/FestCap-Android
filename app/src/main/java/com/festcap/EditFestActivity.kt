@@ -171,7 +171,7 @@ class EditFestActivity : AppCompatActivity() {
         }
 
         val adminIds = adminEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to true }
-        val memberIds = memberEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to true }
+        val memberIds = memberEmailAddrs.mapNotNull { emailToUserIds[it] }.associate { it to mapOf(it to true) }
         return argFest.copy(name = festName.toString(), adminIds = adminIds, memberIds = memberIds)
     }
 

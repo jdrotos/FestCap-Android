@@ -9,7 +9,7 @@ import java.util.*
  */
 @Parcelize
 data class User(override val id: String = UUID.randomUUID().toString(),
-                val name: String = "",
+                val name: String? = null,
                 val email: String = "",
                 val fests: List<String> = emptyList())
     : Identifiable, Parcelable
